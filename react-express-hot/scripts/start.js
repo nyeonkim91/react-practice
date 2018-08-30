@@ -79,7 +79,27 @@ choosePort(HOST, DEFAULT_PORT)
       proxyConfig,
       urls.lanUrlForConfig
     );
-    const devServer = new WebpackDevServer(compiler, serverConfig);
+    // Express.js 적용을 위해 수정
+    // const devServer = new WebpackDevServer(compiler, serverConfig)
+    const devServer = new WebpackDevServer(
+      compiler,
+      {
+        ...serverConfig,
+        proxy: {
+          ...serverConfig.proxy,
+          "*": "http://localhost:8080"
+        }
+      }
+    ).listen(8081, '0.0.0.0', function (err, result) {
+      if (err) {
+        return console.log(err);
+      }
+
+      clearConsole();
+      console.log(chalk.cyan('Starting the development server...'));
+      console.log();
+      openBrowser();
+    });;
     // Launch WebpackDevServer.
     devServer.listen(port, HOST, err => {
       if (err) {
