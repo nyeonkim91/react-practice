@@ -33,6 +33,8 @@ module.exports = {
   // This means they will be the "root" imports that are included in JS bundle.
   // The first two entry points enable "hot" CSS and auto-refreshes for JS.
   entry: [
+    // react-hot-loader 적용하기
+    'react-hot-loader/patch',
     // We ship a few polyfills by default:
     require.resolve('./polyfills'),
     // Include an alternative client for WebpackDevServer. A client's job is to
@@ -155,6 +157,11 @@ module.exports = {
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
               cacheDirectory: true,
+
+              // react-hot-loader 적용하기
+              plugins: [
+                'react-hot-loader/babel'
+              ]
             },
           },
           // "postcss" loader applies autoprefixer to our CSS.
