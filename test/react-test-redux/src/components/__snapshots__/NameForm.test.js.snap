@@ -10,7 +10,7 @@ exports[`NameForm matches snapshot 1`] = `
   <input
     onChange={[Function]}
     type="text"
-    value="nodejs"
+    value="hello"
   />
   <button
     type="submit"

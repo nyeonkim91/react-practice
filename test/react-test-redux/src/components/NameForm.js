@@ -12,7 +12,7 @@ class NameForm extends Component {
     return (
       <form onSubmit={onSubmit}>
         <label>이름</label>
-        <input type="text" value={name} onChange={onChange} />
+        <input type="text" value={value} onChange={onChange} />
         <button type="submit">등록</button>
       </form>
     );

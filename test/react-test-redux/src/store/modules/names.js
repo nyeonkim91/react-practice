@@ -1,4 +1,3 @@
-
 import { createAction, handleActions } from 'redux-actions';
 
 const CHANGE_INPUT = 'names/CHANGE_INPUT';
