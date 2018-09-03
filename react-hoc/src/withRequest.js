@@ -1,5 +1,6 @@
 // HOC
 import React, { Component } from 'react';
+import axios from 'axios';
 
 const withRequest = (url) => (WrappedComponent) => {
   return class extends Component {
@@ -21,7 +22,7 @@ const withRequest = (url) => (WrappedComponent) => {
     componentDidMount() {
       this.initialize();
     }
-    
+
     render() {
       const { data } = this.state;
       return (

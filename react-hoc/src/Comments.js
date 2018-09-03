@@ -1,40 +1,20 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import withRequest from './withRequest';
 
 class Comments extends Component {
-  state = {
-    data: null
-  }
-
-  // 반복되는 코드
-  async initialize() {
-    try {
-      const response = await axios.get('https://jsonplaceholder.typicode.com/comments?postId=1');
-      this.setState({
-        data: response.data
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  componentDidMount() {
-    this.initialize();
-  }
-
-
   render() {
-    const { data } = this.state;
+    const { data } = this.props;
 
     if (!data) return null;
 
     return (
       <div>
-        {JSON.stringify(this.state.data)}
+        {JSON.stringify(data)}
       </div>
     );
   }
 }
 
 
-export default Comments;
+const CommentsWithData = withRequest('https://jsonplaceholder.typicode.com/comments?postId=1')(Comments)
+export default CommentsWithData;

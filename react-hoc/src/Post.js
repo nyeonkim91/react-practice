@@ -1,40 +1,21 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import withRequest from './withRequest';
 
 class Post extends Component {
-  state = {
-    data: null
-  }
-
-  // 반복되는 코드
-  async initialize() {
-    try {
-      const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1');
-      this.setState({
-        data: response.data
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  componentDidMount() {
-    this.initialize();
-  }
-
-
   render() {
-    const { data } = this.state;
+    const { data } = this.props;
 
     if (!data) return null;
 
     return (
       <div>
-        { JSON.stringify(this.state.data) }
+        { JSON.stringify(data) }
       </div>
     );
   }
 }
 
+const PostWithData = withRequest('https://jsonplaceholder.typicode.com/posts/1')(Post)
+export default PostWithData;
 
-export default Post;
+// export default withRequest('https://jsonplaceholder.typicode.com/posts/1')(Post);
