@@ -5,11 +5,17 @@ exports[`Counter matches snapshot 1`] = `
   <h1>
     카운터
   </h1>
-  <h2 />
-  <button>
+  <h2>
+    700
+  </h2>
+  <button
+    onClick={[Function]}
+  >
     +
   </button>
-  <button>
+  <button
+    onClick={[Function]}
+  >
     -
   </button>
 </div>
